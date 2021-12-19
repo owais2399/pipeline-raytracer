@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Team Pipeline</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <!-- One -->
+        <section id="concept">
+          <div class="container">
+            <header class="major">
+              <h2>Concept</h2>
+              <p>Rendering a High-Polygon Chess Board Scene</p>
+            </header>
+            <p style="font-size: 1.4em">
+              We thought that it would be pretty cool to have a customizable
+              chess board as our scene. One of our team members spent a good
+              amount of time this semester building a chess AI for another
+              class, and so the subject matter was on our mind, and we figured
+              that it would be neat if we could render pleasing-looking scenes
+              representing arbitrary chess states. Once we had a basic rendering
+              of our board, we played around with adding things like reflectance
+              on the tiles. We used chess pieces with a lot of polygons to show
+              off our ray tracer using a complex scene.
+            </p>
+          </div>
+        </section>
+
+        <!-- Two -->
+        <section id="scene">
+          <div class="container">
+            <header class="major">
+              <h2>Scene</h2>
+            </header>
+            <div class="row">
+              <img width="100%" height="100%" src="images/chess_matte.png" />
+            </div>
+            <a
+              download="chess_matte.png"
+              href="images/chess_matte.png"
+              title="Orignal Scene"
+            >
+              High Resolution Image (1920x1920)
+            </a>
+            <br />
+            <a
+              download="chess_matte_low.png"
+              href="images/chess_matte_low.png"
+              title="Original Scene Low Res"
+            >
+              Low Resolution Image (480x480)
+            </a>
+            <br />
+            <p style="font-size: 1.4em">
+              We built this scene using triangles and imported models as smooth
+              triangles for the chess pieces. In this scene we use perspecitve
+              viewing and include several point light sources with ambient
+              lighting to render the scene. We also use Jitter-Gaussian
+              anti-aliasing to smooth out the jaggies with 9 rays per pixel.
+              Overall, there are 650,000+ polygons captured in our scene which
+              took around 20 seconds to render using a KD tree and
+              multithreading on 8 cores.
+            </p>
+
+            <h3>Adding Reflections</h3>
+            <div class="row">
+              <img
+                width="100%"
+                height="100%"
+                src="images/chess_reflective.png"
+              />
+            </div>
+            <br />
+            <a
+              download="chess_reflective.png"
+              href="images/chess_reflective.png"
+              title="Reflective Scene"
+            >
+              High Resolution Image (1920x1920)
+            </a>
+            <br />
+            <a
+              download="chess_reflective_low.png"
+              href="images/chess_reflective_low.png"
+              title="Reflective Scene Low Res"
+            >
+              Low Resolution Image (480x480)
+            </a>
+            <br />
+            <p style="font-size: 1.4em">
+              In this scene we demonstrate our reflective material by replacing
+              the matte material on the chessboard triangles with a reflective
+              material. This uses secondary rays to calculate the colors that
+              result from bouncing off the polygons.
+            </p>
+
+            <h3>Other Variations</h3>
+            <div class="row">
+              <div class="col-6 col-12-xsmall">
+                <a
+                  download="chess_reflective_colors.png"
+                  href="images/chess_reflective_colors.png"
+                  title="Reflective Colors"
+                >
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="images/chess_reflective_colors.png"
+                  />
+                </a>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Colored Reflections
+                    </p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-6 col-12-xsmall">
+                <a
+                  download="chess_reflective_sphere.png"
+                  href="images/chess_reflective_sphere.png"
+                  title="Reflective Sphere"
+                >
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="images/chess_reflective_sphere.png"
+                  />
+                </a>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Reflective Sphere
+                    </p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              We also played around with a couple other things in our scene. Our
+              reflective material also had the ability to filter the colors in
+              the reflected image so we tested this out on the chessboard. We
+              also played around with adding other reflecive objects like this
+              sphere above the board.
+            </p>
+
+            <h3>Honorable Mentions</h3>
+            <div class="row">
+              <div class="col-6 col-12-xsmall">
+                <a
+                  download="chess_buggy_reflective_walls.png"
+                  href="images/chess_buggy_reflective_walls.png"
+                  title="Buggy Reflective Walls"
+                >
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="images/chess_buggy_reflective_walls.png"
+                  />
+                </a>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">Mirrors</p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-6 col-12-xsmall">
+                <a
+                  download="chess_red_reflective_walls.png"
+                  href="images/chess_red_reflective_walls.png"
+                  title="Red Reflective Walls"
+                >
+                  <img
+                    width="100%"
+                    height="auto"
+                    src="images/chess_red_reflective_walls.png"
+                  />
+                </a>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Colored Mirrors
+                    </p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              We also experimented with adding mirrors to demonstrate how
+              reflections can bounce off of mulitple reflective surfaces in our
+              scene, however we found that this generated out of gamut colors
+              (which were changed to black in the ppm to png conversion
+              process). This is a feature, amoung others, that we would like to
+              fully implement with more time.
+            </p>
+          </div>
+        </section>
+
+        <!-- Three -->
+        <section id="features">
+          <div class="container">
+            <header class="major">
+              <h2>Features</h2>
+              <p>
+                Here are some of the interesting features we implemented on top
+                of the code provided:
+              </p>
+            </header>
+            <h3>Lighting</h3>
+            <div class="row">
+              <div class="col-4 col-12-xsmall">
+                <img width="100%" src="images/ambient.png" />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">Ambient Light</p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-4 col-12-xsmall">
+                <img width="100%" src="images/ambient_point.png" />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Ambient and Point Light
+                    </p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-4 col-12-xsmall">
+                <img width="100%" src="images/ambient_point_directional.png" />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Ambient, Point, and Directional Light
+                    </p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              These images show some scenes we created using some of the types
+              of lighting that we implemented.
+            </p>
+            <h3>Materials</h3>
+            <div class="row">
+              <div class="col-6 col-12-xsmall">
+                <img width="100%" src="images/ambient_point_directional.png" />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major" style="font-size: 1.4em">
+                    <p class="names">Matte Material</p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-6 col-12-xsmall">
+                <img width="100%" src="images/reflective.png" />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major" style="font-size: 1.4em">
+                    <p class="names">Reflective Material</p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              These images show spheres of different materials that we
+              implemented.
+            </p>
+            <h3>Smooth Shading</h3>
+            <div class="row">
+              <div class="col-6 col-12-xsmall">
+                <img
+                  width="100%"
+                  src="images/bunnyFlat.png"
+                  alt="Stanford bunny with flat shading"
+                />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major" style="font-size: 1.4em">
+                    <p class="names">Flat Shading</p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-6 col-12-xsmall">
+                <img
+                  width="100%"
+                  src="images/bunnySmooth.png"
+                  alt="Stanford bunny with smooth shading"
+                />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major" style="font-size: 1.4em">
+                    <p class="names">Smooth Shading</p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              These two images compare the Stanford bunny triangle mesh with
+              flat and smooth shading. In flat shading, each triangle has a
+              constant normal, causing each triangle to appear "flat". In smooth
+              shading, the normal of each triangle varies based on the normals
+              of the adjacent triangles, creating a smoother appearance. This
+              allows us to better represent smooth surfaces (such as our chess
+              pieces) as triangle meshes.
+            </p>
+            <h3>Anti-Aliasing</h3>
+            <div class="row">
+              <div class="col-4 col-12-xsmall">
+                <img
+                  width="100%"
+                  src="images/antiAliasSimple.png"
+                  alt="Primitives with no anti-aliasing"
+                />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      No Anti-Aliasing
+                    </p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-4 col-12-xsmall">
+                <img
+                  width="100%"
+                  src="images/antiAliasRegularBox4.png"
+                  alt="Primitives with regular sampling and a box filter"
+                />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Regular Sampling with a Box Filter
+                    </p>
+                  </header>
+                </div>
+              </div>
+              <div class="col-4 col-12-xsmall">
+                <img
+                  width="100%"
+                  src="images/antiAliasJitterGaussian4.png"
+                  alt="Primitives with jitter sampling and a gaussian filter"
+                />
+                <div style="padding-bottom: 0px !important">
+                  <header class="major">
+                    <p style="font-size: 1.4em" class="names">
+                      Jitter Sampling with a Gaussian Filter
+                    </p>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              These three images demonstrate the two types of anti-aliasing we
+              implemented. The first image contains a scene with three
+              primitives with no anti-aliasing. Notice the unpleasant "jaggies"
+              that appear along the edges of the triangle. The second image uses
+              regular sampling of degree 4 with a box filter, meaning that we
+              cast 16 rays at regular intervals per pixel with equal weight. The
+              third image uses jitter sampling of degree 4 with a gaussian
+              filter. This means that each ray is cast at a random point through
+              its region of the pixel and given more weight if it is closer to
+              the center of the pixel. This approach produces more natural
+              looking images but is more computationally expensive.
+            </p>
+          </div>
+        </section>
+
+        <!-- Four -->
+        <section id="times">
+          <div class="container">
+            <header class="major">
+              <h2>Rendering Times</h2>
+            </header>
+            <h3>K-D Tree</h3>
+            <img
+              width="100%"
+              src="images/k-dTreeSpeedup.png"
+              alt="Graph showing runtime as function of number of vertices for kD and regular"
+            />
+            <img
+              width="100%"
+              src="images/k-dtable.png"
+              alt="Table showing runtime as function of number of vertices for kD and regular"
+            />
+            <p style="font-size: 1.4em">
+              We implemented K-D trees as our acceleration structure, and got
+              drastic speedup results after a lot of debugging. It took a lot of
+              effort but it was more than worth it in the end because it allowed
+              us to render complex 1920x1080 scenes in very short amounts of
+              time, giving us the freedom to use higher-resolution models than
+              we anticipated and more complex materials (e.g. reflective). As
+              you can see, the returns are less apparent for small numbers of
+              polygons, but once the number of them gets high enough it's a
+              night-and-day difference.
+            </p>
+            <h3>Multithreading</h3>
+            <img
+              width="100%"
+              src="images/multithreadSpeedup.png"
+              alt="Graph showing runtime on different numbers of cores"
+            />
+            <img
+              width="100%"
+              src="images/multithreadTable.png"
+              alt="Table showing runtime on different numbers of cores"
+            />
+            <br /><br />
+            <p style="font-size: 1.4em">
+              Because ray tracing is a highly parallelizable task, we
+              implemented multithreading using Open MP. We rendered a test scene
+              with 16,302 polygons and 800x800 resolution with different numbers
+              of cores ranging from 1 to 64. The graph above demonstrates a a
+              significant speedup with increasing cores, with the program
+              executing 32 times faster on 64 cores compared to 1 core.
+            </p>
+          </div>
+        </section>
+
+        <!-- Five -->
+        <section id="extra-credit">
+          <div class="container">
+            <header class="major">
+              <h2>Extra Credit Features</h2>
+              <p>
+                The following features we implemented go beyond the basic
+                requirements for this project.
+              </p>
+            </header>
+            <ol>
+              <li style="font-size: 1.4em">
+                <b>Multithreading:</b> We implemented multithreading with
+                OpenMp, which increased our execution speed by over 32 times.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Loading PLYs:</b> We can load any arbitrary triangle mesh ply
+                file.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Smooth Shading:</b> When loading a triangle mesh, we can
+                choose between smooth or flat shading.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Regular Sampling with a Box Filter:</b> For simple
+                anti-aliasing, we implemented regular sampling with a box
+                filter. We can specify the degree (number of rays) as a
+                parameter of the sampler.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Jitter Sampling with a Gaussian Filter:</b> For advanced
+                anti-aliasing, we implemented jitter sampling with a gaussian
+                filter. We can specify the degree and standard deviation as
+                parameters of the sampler.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Command-line Interface:</b> The user can customize many
+                aspects of the program by passing command line flags. For
+                example, they can specify the output file name or enter
+                "verbose" which prints render information.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Generalized Camera Viewing</b> While the default
+                infrastructure requires that the viewing plane have a constant
+                z, we generalized the viewing plane to support non constant z.
+                We can support specifying the camera and viewing plane in terms
+                of a camera position, camera angle, and field of view.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Command-line Interface:</b> The user can customize many
+                aspects of the program by passing command line flags. For
+                example, they can specify the output file name or enter
+                "verbose" which prints render information.
+              </li>
+              <br />
+              <li style="font-size: 1.4em">
+                <b>Configurable Chess Layout:</b> The layout of the pieces on
+                the chess board is read at runtime from the file
+                "chessLayout.txt". This way, the we can change the layout simply
+                by changing the layout file without having to recompile the
+                raytracer.
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Six -->
+        <section id="team">
+          <div class="container">
+            <header class="major">
+              <h2>The Team</h2>
+              <br />
+            </header>
+            <div class="row">
+              <div class="col-3 col-12-xsmall">
+                <span class="image avatar"
+                  ><img src="images/bb.jpg" alt=""
+                /></span>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major"><h3 class="names">Ben</h3></header>
+                  <header class="major"><h3 class="names">Baral</h3></header>
+                  <br />
+                </div>
+              </div>
+              <div class="col-3 col-12-xsmall">
+                <span class="image avatar"
+                  ><img src="images/mc.jpg" alt=""
+                /></span>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major"><h3 class="names">Matthew</h3></header>
+                  <header class="major">
+                    <h3 class="names">Calligaro</h3>
+                  </header>
+                  <br />
+                </div>
+              </div>
+              <div class="col-3 col-12-xsmall">
+                <span class="image avatar"
+                  ><img src="images/jr.jpg" alt=""
+                /></span>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major"><h3 class="names">Julia</h3></header>
+                  <header class="major"><h3 class="names">Read</h3></header>
+                  <br />
+                </div>
+              </div>
+              <div class="col-3 col-12-xsmall">
+                <span class="image avatar"
+                  ><img src="images/ds.jpg" alt=""
+                /></span>
+                <div style="padding-bottom: 0px !important">
+                  <header class="major"><h3 class="names">David</h3></header>
+                  <header class="major"><h3 class="names">Sobek</h3></header>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <br />
+            <p style="font-size: 1.4em">
+              We are Computer Science majors at Harvey Mudd College, class of
+              2020, taking Computer Graphics (CS155) at Pitzer College with
+              Professor Waqar Saleem. Thanks for checking out our raytracing
+              project!
+            </p>
+          </div>
+        </section>
+
+        <!-- Seven -->
+        <section id="sources">
+          <div class="container">
+            <header class="major">
+              <h2>Sources</h2>
+              <p>
+                We would like to give credit to the following third party
+                sources for their assistance in this project:
+              </p>
+            </header>
+            <ul>
+              <li>
+                <p style="font-size: 1.4em">
+                  Kevin Suffern's
+                  <a href="http://www.raytracegroundup.com/" target="_blank">
+                    Ray Tracing from the Ground Up
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  Nicholas Sharp's
+                  <a href="https://github.com/nmwsharp/happly" target="_blank">
+                    hapPLY
+                  </a>
+                  for parsing PLY files
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  NeonArtworks'
+                  <a
+                    href="https://www.thingiverse.com/thing:1138169"
+                    target="_blank"
+                  >
+                    high-poly chess piece models
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  Professor
+                  <a
+                    href="https://habib.edu.pk/SSE/dr-waqar-saleem/"
+                    target="_blank"
+                    >Waqar Saleem</a
+                  >, for his lectures and guidance
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Eight -->
+        <section id="builds">
+          <div class="container">
+            <header class="major">
+              <h2>Build Files</h2>
+              <p>
+                The following build files allow you to reproduce the images
+                shown on this website:
+              </p>
+            </header>
+            <ul>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildAntiAlias.cpp:</b> A scene with hard edges to
+                  demonstrate anti-aliasing
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChapter14.cpp:</b> The provided build from chapter 14
+                  of the textbook
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChessHigh.cpp:</b> High resolution (1920x1920) version
+                  of the chess scene
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChessLow.cpp:</b> Low resolution (480x480) version of
+                  the chess scene
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildHelloWorld.cpp:</b> The provided hello world scene
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChapter14.cpp:</b> A scene demonstrating lighting and
+                  material features
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChapter14.cpp:</b> Our first scene, consisting of a
+                  grid of spheres
+                </p>
+              </li>
+              <li>
+                <p style="font-size: 1.4em">
+                  <b>buildChapter14.cpp:</b> A scene showcasing a single ply
+                  file
+                </p>
+              </li>
+            </ul>
+            <p style="font-size: 1.4em">
+              All of these build files can be found in the
+              <a
+                href="https://github.com/ptz-csci-155/p2--p2-d/tree/master/raytracer/build"
+                target="-blank"
+                >raytracer/build</a
+              >
+              folder of our repository. To use a particular build file, change
+              the first dependency of the "raytracer" target in our make file
+              and run make.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
